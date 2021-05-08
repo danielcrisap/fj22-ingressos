@@ -26,6 +26,7 @@ public class Sessao {
     /**
      * @deprecated hibernate only
      */
+    @Deprecated
     public Sessao(){
 
     }
