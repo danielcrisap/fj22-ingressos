@@ -9,6 +9,7 @@ public class Ingresso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @ManyToOne
     private Sessao sessao;
 
