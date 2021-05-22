@@ -13,6 +13,11 @@ import java.util.stream.Collectors;
 
 public class CarrinhoForm {
     private List<Ingresso> ingressos = new ArrayList<>();
+
+    public List<Ingresso> getIngressos() {
+        return ingressos;
+    }
+
     public List<Ingresso> toIngressos(SessaoDao sessaoDao, LugarDao lugarDao){
         return this.ingressos.stream().map(ingresso -> {
             Sessao sessao = sessaoDao.findOne(ingresso.getSessao().getId());

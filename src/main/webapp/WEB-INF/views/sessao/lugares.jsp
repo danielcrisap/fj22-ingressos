@@ -23,7 +23,7 @@
                     <h1>${sessao.filme.nome}</h1>
                     <h2>${sessao.sala.nome}</h2>
                     <h3>${sessao.horario}</h3>
-                    <img class="capa" src="${imagemCapa.url}" alt="Capa" />
+                    <img class="capa" src="${imagemCapa.url}" alt="Capa"/>
                 </div>
             </div>
             <div class="main">
@@ -41,8 +41,8 @@
                                         <c:forEach var="lugar" items="${map.value}">
                                             <td class="fileira-assento">
                                                 <figure>
-                                                    <svg class="assento ${sessao.isDisponivel(lugar) && !carrinho.isSelecionado(lugar) ? 'disponivel' : 'ocupado'}"
-                                                         onclick="${sessao.isDisponivel(lugar) && !carrinho.isSelecionado(lugar) ? 'changeCheckbox(this)' : ''}"
+                                                    <svg class="assento ${sessao.isDisponivel(lugar) && !carrinho.isSelecionado(lugar) ? 'disponivel': 'ocupado' }"
+                                                         onclick="${sessao.isDisponivel(lugar) && !carrinho.isSelecionado(lugar) ? 'changeCheckbox(this)' : '' }"
                                                          data-lugar="${lugar}" id="${lugar.id}"
                                                          xmlns="http://www.w3.org/2000/svg"
                                                          x="0px" y="0px"
@@ -115,7 +115,7 @@
                         <table class="table table-hover" id="tabela-ingressos">
                             <caption hidden>Tabela de Ingressos</caption>
                             <thead>
-                            <th id="sala" >Sala</th>
+                            <th id="sala">Sala</th>
                             <th id="filme">Filme</th>
                             <th id="horario">Horario</th>
                             <th id="lugar">Lugar</th>
@@ -135,51 +135,51 @@
         <script>
 
             function changeCheckbox(img) {
-                const checkbox = $(img).next()[0];
+                var checkbox = $(img).next()[0];
                 console.log(checkbox);
                 console.log(checkbox.value);
-                const salaId = ${sessao.sala.id};
-                const sessaoId = ${sessao.id};
-                const lugarNome = img.getAttribute('data-lugar');
-                const linhaId = "linha_" + salaId + "_" + sessaoId + "_" + lugarNome;
+                var salaId = ${sessao.sala.id};
+                var sessaoId = ${sessao.id};
+                var lugarNome = img.getAttribute('data-lugar');
+                var linhaId = "linha_" + salaId + "_" + sessaoId + "_" + lugarNome;
 
                 console.log(linhaId);
 
-                const tbody = document.querySelector("#tabela-ingressos>tbody");
+                var tbody = document.querySelector("#tabela-ingressos>tbody");
                 if (!checkbox.checked) {
 
-                    const index = tbody.rows.length;
+                    var index = tbody.rows.length;
 
-                    const inputSessaoId = makeInputHiddenBy('ingressos[' + index + '].sessao.id', sessaoId);
-                    const inputLugarId = makeInputHiddenBy('ingressos[' + index + '].lugar.id', checkbox.value);
+                    var inputSessaoId = makeInputHiddenBy('ingressos[' + index + '].sessao.id', sessaoId);
+                    var inputLugarId = makeInputHiddenBy('ingressos[' + index + '].lugar.id', checkbox.value);
 
-                    const row = tbody.insertRow(index);
+                    var row = tbody.insertRow(index);
                     row.setAttribute('id', linhaId);
 
-                    const cellSala = row.insertCell(0);
-                    const sala = document.createTextNode('${sessao.sala.nome}');
+                    var cellSala = row.insertCell(0);
+                    var sala = document.createTextNode('${sessao.sala.nome}');
                     cellSala.appendChild(sala);
 
-                    const cellFilme = row.insertCell(1);
-                    const filme = document.createTextNode('${sessao.filme.nome}');
+                    var cellFilme = row.insertCell(1);
+                    var filme = document.createTextNode('${sessao.filme.nome}');
                     cellFilme.appendChild(filme);
 
-                    const cellHorario = row.insertCell(2);
-                    const horario = document.createTextNode('${sessao.horario}');
+                    var cellHorario = row.insertCell(2);
+                    var horario = document.createTextNode('${sessao.horario}');
                     cellHorario.appendChild(horario);
 
-                    const cellLugar = row.insertCell(3);
-                    const lugar = document.createTextNode(lugarNome);
+                    var cellLugar = row.insertCell(3);
+                    var lugar = document.createTextNode(lugarNome);
                     cellLugar.appendChild(lugar);
 
-                    const cellTipo = row.insertCell(4);
-                    const selectTipo = document.createElement('select');
+                    var cellTipo = row.insertCell(4);
+                    var selectTipo = document.createElement('select');
                     selectTipo.setAttribute('name', 'ingressos[' + index + '].tipoDeIngresso');
                     selectTipo.setAttribute('class', 'form-control input-sm');
 
                     <c:forEach items="${tiposDeIngressos}" var="tipo" varStatus="status">
-                    const option_${status.index} = document.createElement('option');
-                    const text_${status.index} = document.createTextNode('${tipo.descricao}');
+                    var option_${status.index} = document.createElement('option');
+                    var text_${status.index} = document.createTextNode('${tipo.descricao}');
 
                     option_${status.index}.setAttribute('value', '${tipo}');
                     option_${status.index}.appendChild(text_${status.index});
@@ -196,7 +196,7 @@
                     img.classList.add("escolhido");
                     img.classList.remove("disponivel");
                 } else {
-                    const row = document.querySelector("#" + linhaId);
+                    var row = document.querySelector("#" + linhaId);
 
                     checkbox.checked = false;
                     img.classList.remove("escolhido");
@@ -209,7 +209,7 @@
             }
 
             function makeInputHiddenBy(name, value) {
-                const input = document.createElement('input');
+                var input = document.createElement('input');
                 input.setAttribute('type', 'hidden');
                 input.setAttribute('name', name);
                 input.setAttribute('value', value);
