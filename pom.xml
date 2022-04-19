@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>5.3.8.RELEASE</version>
+            <version>5.5.6</version>
         </dependency>
 
         <dependency>
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>4.2.1.RELEASE</version>
+            <version>5.5.6</version>
         </dependency>
 
 
